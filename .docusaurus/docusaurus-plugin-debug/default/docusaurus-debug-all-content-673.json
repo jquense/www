@@ -1,0 +1,140 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "Next",
+          "banner": null,
+          "badge": false,
+          "noIndex": false,
+          "className": "docs-version-current",
+          "path": "/docs",
+          "tagsPath": "/docs/tags",
+          "isLast": true,
+          "routePriority": -1,
+          "contentPath": "/Users/jasonquense/code/www/docs",
+          "contentPathLocalized": "/Users/jasonquense/code/www/i18n/en/docusaurus-plugin-content-docs/current",
+          "docs": [
+            {
+              "unversionedId": "index",
+              "id": "index",
+              "title": "index",
+              "description": "",
+              "source": "@site/docs/index.mdx",
+              "sourceDirName": ".",
+              "slug": "/",
+              "permalink": "/docs/",
+              "draft": false,
+              "tags": [],
+              "version": "current",
+              "frontMatter": {},
+              "sidebar": "defaultSidebar"
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "defaultSidebar": [
+              {
+                "type": "doc",
+                "id": "index"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": {
+      "blogSidebarTitle": "Recent posts",
+      "blogPosts": [
+        {
+          "id": "coding-principles-for-teams",
+          "metadata": {
+            "permalink": "/coding-principles-for-teams",
+            "source": "@site/blog/2022-11-12-coding-principles-for-teams.mdx",
+            "title": "coding-principles-for-teams",
+            "description": "Philosophy",
+            "date": "2022-11-12T00:00:00.000Z",
+            "formattedDate": "November 12, 2022",
+            "tags": [],
+            "readingTime": 3.18,
+            "hasTruncateMarker": false,
+            "authors": [],
+            "frontMatter": {
+              "slug": "coding-principles-for-teams",
+              "title": "coding-principles-for-teams"
+            },
+            "nextItem": {
+              "title": "Engineers in Design Reviews",
+              "permalink": "/engineering-design-review"
+            }
+          },
+          "content": "## Philosophy\n\n<div className=\"text-xl mb-1\">Be Consistent </div>\n<div className=\"text-xl mb-1\">Be Explicit </div>\n<div className=\"text-xl\">Be Pragmatic </div>\n\n### Consistent\n\nCode that is written consistently reduces cognitive load for developers. It eliminates\ndisagreement over things that do not make a difference to delivering high quality user-focused software.\n\nConsistent (often rigid) application of decided patterns and styles makes a codebase\npredictable. It makes it easier to navigate, empowers teammates to work in new areas and codebases,\nand leaves more mental space for considering product, UX/UI and other business problems.\n\nThe reality is that codebases, especially large ones, are full of arbitrary choices and patterns:\nfolder structure, naming schemes, etc. It ultimately matters less what the \"right\" choice\nis and more that it's made once and consistently applied. And (importantly) it's the\nlack of exceptions to the rule that makes the code predictable.\n\n### Explicit\n\nCode that is explicit leaves no room for misinterpretation. It explains\nand contextualizes itself by nature of its structure and naming. It enables\nteammates to read code quickly and with less external resources.\n\nExplicitness often means sacrificing short or \"neater\" names for ones that\nstate exactly what they are, sometimes with silly verbosity.\n\n```tsx dosAndDonts\n// Bad\nconst [idx, setIndex] = useState(0);\n\n// Good\nconst [firstSelectedIndex, setFirstSelectedIndex] = useState(0);\n```\n\nExplicit code strives for clarity, not just in naming. Overly terse or \"clever\" code\ncan lack explicitiness insofar as it may defy expectation or intuition. We want to spend time understanding\ncomplexity in business logic, not esoteric code styles. A classic example is the use of `Array.reduce` for\ntransforming objects.\n\n```tsx dosAndDonts\n// Bad\nconst parsedData = Object.keys(data).reduce(\n  (next, key) => ({\n    ...next,\n    [key]: parseFloat(data[key]),\n  }),\n  {}\n);\n\n// Good\nconst parsedData = {};\n\nfor (const key of Object.keys(data)) {\n  parsedData[key] = parseFloat(data[key]);\n}\n```\n\n#### Exceptions to the rule\n\nIf an \"implicit\" name is universally understood,\nas with a common language convention, it may be preferable. For instance: `idx` in a for-loop.\nThese cases are exceptions.\n\nThere are also cases where potentially unintuitive patterns\nare so common in the broader JS ecosystem that it's worthwhile to match\nthese patterns. One example is using `Boolean` to filter out falsey values\nfrom an array. As with naming, these exceptions should be explicitly documented.\n\n```tsx\nconst compactArray = [new Date(), null, \"\", \"James\", undefined].filter(Boolean);\n```\n\nThere is also a level of explicitness that is overly pedantic, either\nbecause it's excessively verbose for minimal benefit or at the expense of clarity.\n\n```tsx dosAndDonts\n// Bad\nif (typeof key === \"undefined\" && key === null) {\n  throw Error(\"Key is required\");\n}\n\n// Better\nif (key !== undefined && key !== null) {\n  throw Error(\"Key is required\");\n}\n\n// Best\nif (key == null) {\n  throw Error(\"Key is required\");\n}\n```\n\nChecking for `undefined` and `null` using `===` is more explicit.\nWhile in some sense \"safer\", the likelihood of `undefined` being\nglobally redefined (and not caught by linting) is extremely low.\nThe use of `==` with `null` to check for both `undefined` and `null` is so\ncommon that the more explicit form invites more questions than `== null` does.\n\n### Pragmatic\n\nPragmatism in code is about considering tradeoffs. It requires that we are grounded in the larger picture\nof our work, that we understand what and _why_ we are writing code. To be Pragmatic in engineering is to\nbuild the _appropriate_ thing, within the context of product requirements, user empathy, and technical constraints.\n\nThe goal of Pragmatic code is to balance the scales between delivering user value, quality software, while enabling\nhigh velocity development. This may mean incurring technical debt to ship a feature as much as it will mean, slowing\ndown developement to build future-proof code, or avoid maintainance burdens later. Always consider the wider context\nand think about how decisions may affect the team 6 months from now."
+        },
+        {
+          "id": "engineering-design-review",
+          "metadata": {
+            "permalink": "/engineering-design-review",
+            "source": "@site/blog/2021-08-01-design-reviews.mdx",
+            "title": "Engineers in Design Reviews",
+            "description": "Designs reviews are an opportunity to collaborate with design and product teams.",
+            "date": "2021-08-01T00:00:00.000Z",
+            "formattedDate": "August 1, 2021",
+            "tags": [],
+            "readingTime": 5.2,
+            "hasTruncateMarker": false,
+            "authors": [],
+            "frontMatter": {
+              "slug": "engineering-design-review",
+              "title": "Engineers in Design Reviews"
+            },
+            "prevItem": {
+              "title": "coding-principles-for-teams",
+              "permalink": "/coding-principles-for-teams"
+            }
+          },
+          "content": "Designs reviews are an opportunity to collaborate with design and product teams.\nFull stack and Frontend engineers should work closely with these teams to\nensure high quality user experiences when building new features. Engineers can bring a valuable,\nsystems oriented perspective, to feature design review, since they have a deeper understanding of how technical\nconstraints and designs may impact delivery timelines and user experience.\n\n## Engineering goals\n\nTo that end the engineer's role in a design review is specific and focused on goals that\nplay to our unique position as engineers. It is important to remember that as users-of-software\nour UI/UX impressions are appreciated and valuable. However, it is not the primary goal of the\nengineer to play devils advocate with design or product. Ultimately the designer **owns** the\nresponsibility of creating a UI to meet the needs of our users.\nIt is product's responsibility to understand our user's use cases, and the business needs and synthesize a product spec.\nEngineering is responsible for delivering on the design and product spec producing high-quality, bug free, features that meet user needs.\n\n### 1. Determine if the design can be built\n\nAs an engineer our primary input to design reviews is around the technical feasibility of a proposed design.\nFeasibility is a spectrum. Most things _can_ be built but many things should _should not_ be. That is to say,\nevery design implies a set of technical tradeoffs. For instance, a design fighting web platform conventions,\nmay require extensive amounts of JavaScript to implement.\n\nIn these cases the engineer's job is to advocate for solutions that minimize technical complexity and\noffer alternative design patterns that may provide similar UX but are easier to implement. Common examples of\nthis would be layouts that cannot be represented purely with CSS, behavior that would require a number of\nnew libraries to implement well, or designs that are not accessible.\n\n### 2. Evaluate whether the design integrates and maintains consistency with existing code\n\nAs an implementor and steward of the frontend UI engineers should have a good view of the application UI as whole.\nUnderstanding the patterns and components that are used throughout the frontend. As part of design reviews it is partly\nthe responsibility of the engineer to evaluate how a given feature will \"slot\" into the application.\nWe should invite questions around the shape of the new UI work: Does the design complicate the implementation or\nUX of another feature? Does other upcoming work synergize with the design? Can the design system libraries be\nextended easily or does the design challenge core assumptions? Does the interaction model necessitate specific\nnew APIs? The answers to these questions complicate timelines, resourcing and other engineering concerns so\nit's best to understand them up front.\n\n### 3. Help refine the product spec\n\nAs the shape of feature becomes more concrete, new details about requirements, behavior, and product needs surface.\nEngineering should collaborate with design and product to ensure that thing in designs reconciles with the product spec.\nEngineers should help surface product spec gaps implied by designs.\nThese are often around interactions that aren't necessarily clear or defined in a static Figma.\nHow does clicking through a UI update and change it and can we build that? Is there any Vet specific details that aren't covered?\nDoes UI behavior implies new or more complex API functionality or backend work?\n\n### 4. Develop high level estimate of work\n\nWhile product spec reviews provide initial opportunities for high level estimation, design reviews are a great opportunity to\nsanity check and refine those estimates. Especially since scope and requirements tend to shift as the details become more\nconcrete. Note, that the goal is not to replace refinement/pointing sessions, but to build good \"medium\" resolution\nestimates of the scope and size of the project.\n\n## Playbook\n\nTo meet this goals what follows some practical avenues of investigation when interrogating a design. The goal is not\nsimply to accept or reject it. Instead we should contribute to the process of the balancing the wider set of\nuser needs, business requirements and engineering realities. Some features may warrant tradeoffs in performance\nor engineering maintainability because the business needs outweigh the engineering cost.\nOur job to clarify the realities and costs of those tradeoffs, and to surface feasible alternatives.\n\nUse the following sets of questions as a guide.\n\n### Can this design be built:\n\n- Using features supported in our browser matrix?\n- Would the implementation incur significant tech debt?\n  - What would the plan be for paying it down?\n  - Does the complexity leak to other application areas making it more error prone or harder to maintain?\n- Accessibly?\n  - Accommodates touch screens (most windows laptops have touch screens)\n  - Designs are keyboard accessible, i.e. don't require a mouse. This is especially relevant for data input UI\n- With good performance?\n  - The web platform isn't great at everything, does the design work against the platform conventions resulting in a hard-optimize UX?\n- With reasonable increases to bundle size, page load performance, and client-server communication\n  - Will the UI hammer the server with significantly more requests or increase load substantially\n  - Will a change require large amounts of new libraries or other dependencies?\n\n### Is the design clear?\n\n- Are the transitions between screens obvious, and addressable?\n  - How will screen URLS work, can we represent this design with our frontend routing tools?\n- How does the design respond to changes in window size, device form factors?\n  - Is the example data representative? How does text overflow? How does content not fitting get handled?\n- Are all their new interactions that are not covered by the designs.\n  - e.g. new button variants need \"hover\", \"active\", and \"disabled\" styles.\n\n### How much work will this take?\n\n- Does this require new design system components?\n  - Are they specced to the higher standard required for general UI components?\n  - Are there existing similar patterns that could be used instead of building new ones?\n- Does this require third party library or dependencies?\n  - Are there tradeoffs with integrating, e.g. sometimes styling or branding is harder for off the shelf UI components.\n- **Are there any small tweaks to the design that would significantly decrease the engineering complexity?**"
+        }
+      ],
+      "blogListPaginated": [
+        {
+          "items": [
+            "coding-principles-for-teams",
+            "engineering-design-review"
+          ],
+          "metadata": {
+            "permalink": "/",
+            "page": 1,
+            "postsPerPage": 10,
+            "totalPages": 1,
+            "totalCount": 2,
+            "blogDescription": "Blog",
+            "blogTitle": "Blog"
+          }
+        }
+      ],
+      "blogTags": {},
+      "blogTagsListPath": "/tags"
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": [
+      {
+        "type": "mdx",
+        "permalink": "/markdown-page",
+        "source": "@site/src/pages/markdown-page.md",
+        "title": "Markdown page example",
+        "description": "You don't need React to write simple standalone pages.",
+        "frontMatter": {
+          "title": "Markdown page example"
+        }
+      }
+    ]
+  },
+  "docusaurus-plugin-debug": {},
+  "docusaurus-theme-classic": {},
+  "docusaurus-bootstrap-plugin": {},
+  "docusaurus-mdx-fallback-plugin": {}
+}

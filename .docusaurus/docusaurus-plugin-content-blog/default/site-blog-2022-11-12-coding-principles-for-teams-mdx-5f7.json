@@ -1,0 +1,20 @@
+{
+  "permalink": "/coding-principles-for-teams",
+  "source": "@site/blog/2022-11-12-coding-principles-for-teams.mdx",
+  "title": "coding-principles-for-teams",
+  "description": "Philosophy",
+  "date": "2022-11-12T00:00:00.000Z",
+  "formattedDate": "November 12, 2022",
+  "tags": [],
+  "readingTime": 3.18,
+  "hasTruncateMarker": false,
+  "authors": [],
+  "frontMatter": {
+    "slug": "coding-principles-for-teams",
+    "title": "coding-principles-for-teams"
+  },
+  "nextItem": {
+    "title": "Engineers in Design Reviews",
+    "permalink": "/engineering-design-review"
+  }
+}

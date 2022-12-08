@@ -1,0 +1,116 @@
+---
+slug: coding-principles-for-teams
+title: coding-principles-for-teams
+---
+
+## Philosophy
+
+<div className="text-xl mb-1">Be Consistent </div>
+<div className="text-xl mb-1">Be Explicit </div>
+<div className="text-xl">Be Pragmatic </div>
+
+### Consistent
+
+Code that is written consistently reduces cognitive load for developers. It eliminates
+disagreement over things that do not make a difference to delivering high quality user-focused software.
+
+Consistent (often rigid) application of decided patterns and styles makes a codebase
+predictable. It makes it easier to navigate, empowers teammates to work in new areas and codebases,
+and leaves more mental space for considering product, UX/UI and other business problems.
+
+The reality is that codebases, especially large ones, are full of arbitrary choices and patterns:
+folder structure, naming schemes, etc. It ultimately matters less what the "right" choice
+is and more that it's made once and consistently applied. And (importantly) it's the
+lack of exceptions to the rule that makes the code predictable.
+
+### Explicit
+
+Code that is explicit leaves no room for misinterpretation. It explains
+and contextualizes itself by nature of its structure and naming. It enables
+teammates to read code quickly and with less external resources.
+
+Explicitness often means sacrificing short or "neater" names for ones that
+state exactly what they are, sometimes with silly verbosity.
+
+```tsx dosAndDonts
+// Bad
+const [idx, setIndex] = useState(0);
+
+// Good
+const [firstSelectedIndex, setFirstSelectedIndex] = useState(0);
+```
+
+Explicit code strives for clarity, not just in naming. Overly terse or "clever" code
+can lack explicitiness insofar as it may defy expectation or intuition. We want to spend time understanding
+complexity in business logic, not esoteric code styles. A classic example is the use of `Array.reduce` for
+transforming objects.
+
+```tsx dosAndDonts
+// Bad
+const parsedData = Object.keys(data).reduce(
+  (next, key) => ({
+    ...next,
+    [key]: parseFloat(data[key]),
+  }),
+  {}
+);
+
+// Good
+const parsedData = {};
+
+for (const key of Object.keys(data)) {
+  parsedData[key] = parseFloat(data[key]);
+}
+```
+
+#### Exceptions to the rule
+
+If an "implicit" name is universally understood,
+as with a common language convention, it may be preferable. For instance: `idx` in a for-loop.
+These cases are exceptions.
+
+There are also cases where potentially unintuitive patterns
+are so common in the broader JS ecosystem that it's worthwhile to match
+these patterns. One example is using `Boolean` to filter out falsey values
+from an array. As with naming, these exceptions should be explicitly documented.
+
+```tsx
+const compactArray = [new Date(), null, "", "James", undefined].filter(Boolean);
+```
+
+There is also a level of explicitness that is overly pedantic, either
+because it's excessively verbose for minimal benefit or at the expense of clarity.
+
+```tsx dosAndDonts
+// Bad
+if (typeof key === "undefined" && key === null) {
+  throw Error("Key is required");
+}
+
+// Better
+if (key !== undefined && key !== null) {
+  throw Error("Key is required");
+}
+
+// Best
+if (key == null) {
+  throw Error("Key is required");
+}
+```
+
+Checking for `undefined` and `null` using `===` is more explicit.
+While in some sense "safer", the likelihood of `undefined` being
+globally redefined (and not caught by linting) is extremely low.
+The use of `==` with `null` to check for both `undefined` and `null` is so
+common that the more explicit form invites more questions than `== null` does.
+
+### Pragmatic
+
+Pragmatism in code is about considering tradeoffs. It requires that we are grounded in the larger picture
+of our work, that we understand what and _why_ we are writing code. To be Pragmatic in engineering is to
+build the _appropriate_ thing, within the context of product requirements, user empathy, and technical constraints.
+
+The goal of Pragmatic code is to balance the scales between delivering user value, quality software, while enabling
+high velocity development. This may mean incurring technical debt to ship a feature as much as it will mean, slowing
+down developement to build future-proof code, or avoid maintainance burdens later. Always consider the wider context
+and think about how decisions may affect the team 6 months from now.

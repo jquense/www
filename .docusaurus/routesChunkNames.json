@@ -1,0 +1,102 @@
+{
+  "/__docusaurus/debug-8cd": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-6-da-db4"
+    }
+  },
+  "/__docusaurus/debug/config-655": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-6-da-db4"
+    }
+  },
+  "/__docusaurus/debug/content-d90": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-6-da-db4"
+    },
+    "allContent": "allContent---docusaurus-debug-content-246-9aa"
+  },
+  "/__docusaurus/debug/globalData-acc": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-6-da-db4"
+    }
+  },
+  "/__docusaurus/debug/metadata-c87": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-6-da-db4"
+    }
+  },
+  "/__docusaurus/debug/registry-770": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-6-da-db4"
+    }
+  },
+  "/__docusaurus/debug/routes-217": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-6-da-db4"
+    }
+  },
+  "/archive-917": {
+    "__comp": "__comp---theme-blog-archive-page-9-e-4-1d8",
+    "__context": {
+      "plugin": "plugin---archive-934-fbd"
+    },
+    "archive": "archive---archive-2-e-8-25f"
+  },
+  "/coding-principles-for-teams-f94": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---archive-934-fbd"
+    },
+    "sidebar": "sidebar---coding-principles-for-teams-814-fab",
+    "content": "content---coding-principles-for-teams-5-f-7-933"
+  },
+  "/engineering-design-review-199": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---archive-934-fbd"
+    },
+    "sidebar": "sidebar---coding-principles-for-teams-814-fab",
+    "content": "content---engineering-design-reviewcc-5-78a"
+  },
+  "/markdown-page-6ad": {
+    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+    "__context": {
+      "plugin": "plugin---markdown-pagea-6-e-3a9"
+    },
+    "content": "content---markdown-page-393-028"
+  },
+  "/docs-904": {
+    "__comp": "__comp---theme-doc-page-1-be-9be",
+    "__context": {
+      "plugin": "plugin---docs-034-318"
+    },
+    "versionMetadata": "versionMetadata---docs-935-398"
+  },
+  "/docs/-77c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-4-ed-831"
+  },
+  "/-d55": {
+    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+    "__context": {
+      "plugin": "plugin---archive-934-fbd"
+    },
+    "sidebar": "sidebar---coding-principles-for-teams-814-fab",
+    "items": [
+      {
+        "content": "content---0-ec-434"
+      },
+      {
+        "content": "content---fd-7-447"
+      }
+    ],
+    "metadata": "metadata---a-55-c63"
+  }
+}

@@ -1,0 +1,102 @@
+---
+slug: engineering-design-review
+title: Engineers in Design Reviews
+---
+
+Designs reviews are an opportunity to collaborate with design and product teams.
+Full stack and Frontend engineers should work closely with these teams to
+ensure high quality user experiences when building new features. Engineers can bring a valuable,
+systems oriented perspective, to feature design review, since they have a deeper understanding of how technical
+constraints and designs may impact delivery timelines and user experience.
+
+## Engineering goals
+
+To that end the engineer's role in a design review is specific and focused on goals that
+play to our unique position as engineers. It is important to remember that as users-of-software
+our UI/UX impressions are appreciated and valuable. However, it is not the primary goal of the
+engineer to play devils advocate with design or product. Ultimately the designer **owns** the
+responsibility of creating a UI to meet the needs of our users.
+It is product's responsibility to understand our user's use cases, and the business needs and synthesize a product spec.
+Engineering is responsible for delivering on the design and product spec producing high-quality, bug free, features that meet user needs.
+
+### 1. Determine if the design can be built
+
+As an engineer our primary input to design reviews is around the technical feasibility of a proposed design.
+Feasibility is a spectrum. Most things _can_ be built but many things should _should not_ be. That is to say,
+every design implies a set of technical tradeoffs. For instance, a design fighting web platform conventions,
+may require extensive amounts of JavaScript to implement.
+
+In these cases the engineer's job is to advocate for solutions that minimize technical complexity and
+offer alternative design patterns that may provide similar UX but are easier to implement. Common examples of
+this would be layouts that cannot be represented purely with CSS, behavior that would require a number of
+new libraries to implement well, or designs that are not accessible.
+
+### 2. Evaluate whether the design integrates and maintains consistency with existing code
+
+As an implementor and steward of the frontend UI engineers should have a good view of the application UI as whole.
+Understanding the patterns and components that are used throughout the frontend. As part of design reviews it is partly
+the responsibility of the engineer to evaluate how a given feature will "slot" into the application.
+We should invite questions around the shape of the new UI work: Does the design complicate the implementation or
+UX of another feature? Does other upcoming work synergize with the design? Can the design system libraries be
+extended easily or does the design challenge core assumptions? Does the interaction model necessitate specific
+new APIs? The answers to these questions complicate timelines, resourcing and other engineering concerns so
+it's best to understand them up front.
+
+### 3. Help refine the product spec
+
+As the shape of feature becomes more concrete, new details about requirements, behavior, and product needs surface.
+Engineering should collaborate with design and product to ensure that thing in designs reconciles with the product spec.
+Engineers should help surface product spec gaps implied by designs.
+These are often around interactions that aren't necessarily clear or defined in a static Figma.
+How does clicking through a UI update and change it and can we build that? Is there any Vet specific details that aren't covered?
+Does UI behavior implies new or more complex API functionality or backend work?
+
+### 4. Develop high level estimate of work
+
+While product spec reviews provide initial opportunities for high level estimation, design reviews are a great opportunity to
+sanity check and refine those estimates. Especially since scope and requirements tend to shift as the details become more
+concrete. Note, that the goal is not to replace refinement/pointing sessions, but to build good "medium" resolution
+estimates of the scope and size of the project.
+
+## Playbook
+
+To meet this goals what follows some practical avenues of investigation when interrogating a design. The goal is not
+simply to accept or reject it. Instead we should contribute to the process of the balancing the wider set of
+user needs, business requirements and engineering realities. Some features may warrant tradeoffs in performance
+or engineering maintainability because the business needs outweigh the engineering cost.
+Our job to clarify the realities and costs of those tradeoffs, and to surface feasible alternatives.
+
+Use the following sets of questions as a guide.
+
+### Can this design be built:
+
+- Using features supported in our browser matrix?
+- Would the implementation incur significant tech debt?
+  - What would the plan be for paying it down?
+  - Does the complexity leak to other application areas making it more error prone or harder to maintain?
+- Accessibly?
+  - Accommodates touch screens (most windows laptops have touch screens)
+  - Designs are keyboard accessible, i.e. don't require a mouse. This is especially relevant for data input UI
+- With good performance?
+  - The web platform isn't great at everything, does the design work against the platform conventions resulting in a hard-optimize UX?
+- With reasonable increases to bundle size, page load performance, and client-server communication
+  - Will the UI hammer the server with significantly more requests or increase load substantially
+  - Will a change require large amounts of new libraries or other dependencies?
+
+### Is the design clear?
+
+- Are the transitions between screens obvious, and addressable?
+  - How will screen URLS work, can we represent this design with our frontend routing tools?
+- How does the design respond to changes in window size, device form factors?
+  - Is the example data representative? How does text overflow? How does content not fitting get handled?
+- Are all their new interactions that are not covered by the designs.
+  - e.g. new button variants need "hover", "active", and "disabled" styles.
+
+### How much work will this take?
+
+- Does this require new design system components?
+  - Are they specced to the higher standard required for general UI components?
+  - Are there existing similar patterns that could be used instead of building new ones?
+- Does this require third party library or dependencies?
+  - Are there tradeoffs with integrating, e.g. sometimes styling or branding is harder for off the shelf UI components.
+- **Are there any small tweaks to the design that would significantly decrease the engineering complexity?**

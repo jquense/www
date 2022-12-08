@@ -1,0 +1,20 @@
+{
+  "permalink": "/engineering-design-review",
+  "source": "@site/blog/2021-08-01-design-reviews.mdx",
+  "title": "Engineers in Design Reviews",
+  "description": "Designs reviews are an opportunity to collaborate with design and product teams.",
+  "date": "2021-08-01T00:00:00.000Z",
+  "formattedDate": "August 1, 2021",
+  "tags": [],
+  "readingTime": 5.2,
+  "hasTruncateMarker": false,
+  "authors": [],
+  "frontMatter": {
+    "slug": "engineering-design-review",
+    "title": "Engineers in Design Reviews"
+  },
+  "prevItem": {
+    "title": "coding-principles-for-teams",
+    "permalink": "/coding-principles-for-teams"
+  }
+}
